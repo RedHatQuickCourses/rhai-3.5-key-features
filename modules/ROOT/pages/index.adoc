@@ -1,0 +1,30 @@
+= An Example Quick Course
+:navtitle: Home
+
+== Introduction
+
+Course Title: Course title FIXME
+
+Description:
+Course description FIXME
+
+Duration: pass:[<span class="course-total-duration" aria-live="polite">…</span>]
+
+== Objectives
+
+On completing this course, you should be able to:
+
+* Observable, measurable objective...
+* Observable, measurable objective...
+* Observable, measurable objective...
+
+== Prerequisites
+
+This course assumes that you have the following prior experience:
+
+* Course or experience...
+* Course or experience...
+* Course or experience...
+
+NOTE: **Use of Artificial Intelligence:**
+This publication contains content or media that is generated or assisted by AI tools. All the Training deliverables have primarily human authorship, and all content was reviewed by a human domain expert.
