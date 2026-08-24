@@ -1,10 +1,10 @@
-name: REPLACEREPONAME
-title: FIXME Course Title
+name: rhai-3.5-key-features
+title: What's New in RHAI 3.5
 version: 1
 nav:
 - modules/ROOT/nav.adoc
-- modules/LABENV/nav.adoc
 - modules/chapter1/nav.adoc
 - modules/chapter2/nav.adoc
 - modules/chapter3/nav.adoc
+- modules/chapter4/nav.adoc
 - modules/appendix/nav.adoc

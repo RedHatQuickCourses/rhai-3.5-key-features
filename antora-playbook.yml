@@ -1,6 +1,6 @@
 site:
-  title: FIXME Course Title
-  start_page: REPLACEREPONAME::index.adoc
+  title: What's New in RHAI 3.5
+  start_page: rhai-3.5-key-features::index.adoc
 
 antora:
   extensions:
