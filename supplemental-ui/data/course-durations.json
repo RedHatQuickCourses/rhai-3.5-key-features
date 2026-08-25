@@ -1,5 +1,5 @@
 {
-  "totalSeconds": 1474,
+  "totalSeconds": 1986,
   "pageCount": 18,
   "pages": [
     {
@@ -70,22 +70,22 @@
     {
       "module": "chapter4",
       "page": "section1.adoc",
-      "seconds": 3
+      "seconds": 82
     },
     {
       "module": "chapter4",
       "page": "section2.adoc",
-      "seconds": 3
+      "seconds": 202
     },
     {
       "module": "chapter4",
       "page": "section3.adoc",
-      "seconds": 3
+      "seconds": 157
     },
     {
       "module": "chapter4",
       "page": "section4.adoc",
-      "seconds": 3
+      "seconds": 83
     },
     {
       "module": "appendix",

@@ -1,33 +1,99 @@
 = Measurable Enterprise AI: Zero-Configuration Observability
 
-=== The Developer's Challenge
+AI platforms need to be measurable.
+RHAI 3.5 ships with out-of-the-box observability dashboards, secure user-level access, and granular token-consumption tracking.
+
+== Centralized, Zero-Configuration Observability Stack [GA]
+
+=== Think First: Question
+
+On deployment, how does the operator bring the entire platform under a unified monitoring plane with zero manual configuration?
+
+=== The Core Answer
+
+On deployment, the operator automatically provisions and configures the Cluster Observability Operator (COO), OpenTelemetry (OTel), Tempo (distributed tracing), and Loki (structured log collection).
+Cluster administrators can turn on cluster-wide metrics and trace collection with zero manual configuration.
+
+==== What is it?
+
+This capability automates the day-0 lifecycle and deployment of RHAI's entire centralized observability stack.
+
+==== How it works?
+
+On deployment, the operator automatically provisions and configures the Cluster Observability Operator (COO), OpenTelemetry (OTel), Tempo (distributed tracing), and Loki(structured log collection).
+Cluster administrators can turn on cluster-wide metrics and trace collection with zero manual configuration, bringing the entire platform under a unified monitoring plane.
+
+==== Enterprise Use Case Scenario
+
+A platform operations team needs to deploy a monitoring stack across a new multi-node RHAI cluster.
+Instead of manually installing and writing configurations for OTel collectors, Grafana datasources, and Prometheus rules, the operator deploys the complete, pre-configured observability stack automatically on Day-0, instantly ready to capture performance data.
+
+== Role-Based Metrics Proxy & Perses Dashboards [GA]
+
+=== Persona Tension
+
+*SRE Lead*: How can non-admin data scientists view latency and GPU metrics without granting them cluster-wide administrative access?
+
+*Platform Engineer*: The Role-Based Metrics Proxy performs SubjectAccessReview checks and injects namespace label matchers into PromQL queries.
+
+=== Think First: Question
+
+How does RHAI unblock dashboard access for non-admin users to view performance metrics scoped strictly to their authorized projects without granting cluster-wide administrative access?
+
+=== The Core Answer
+
+RHAI uses a role-based proxy or Thanos Querier tenancy endpoints to intercept PromQL queries from the dashboard and perform standard Kubernetes SubjectAccessReview checks against the user's token, dynamically injecting namespace label matchers to ensure strict tenant isolation on Perses-based dashboards.
+
+==== What is it?
+
+This feature unblocks dashboard access for non-admin users, allowing data scientists and project owners to view performance metrics scoped strictly to their authorized projects.
+
+==== How it works?
+
+Previously, metrics dashboards were restricted to cluster-admins.
+In 3.5, RHAI uses a role-based proxy or Thanos Querier tenancy endpoints (supported by COO 1.5).
+The system intercepts PromQL queries from the dashboard and performs standard Kubernetes SubjectAccessReview checks against the user's token, dynamically injecting namespace label matchers (e.g., namespace="project-a").
+This ensures strict tenant isolation on Perses-based dashboards, visualizing TTFT, throughput, and GPU utilization for authorized namespaces only.
+
+==== Enterprise Use Case Scenario
+
+A lead data scientist wants to monitor the latency percentiles and GPU memory utilization of their active customer-facing model.
+Instead of asking a cluster administrator to extract Prometheus metrics, they log into the RHAI dashboard.
+The role-based proxy verifies their project permissions and renders a Perses dashboard showing metrics exclusive to their namespace.
+
+== Structured Log Pipeline for MaaS Showback [TP]
 
 [cols="1,2,3", options="header"]
 |===
 | Architectural Dimension
-|
-| RHAI 3.5 Innovation
+| High-Cardinality Metrics
+| Loki Log Pipeline
 
-|
-|
-|
+| Token Tracking
+| Prometheus metrics risk cardinality explosion on per-user tracking.
+| Gateway Log Pipeline: Loki tracks user, subscription, and model metadata for CSV export.
 |===
 
 === Think First: Question
 
-
+How does the platform track and attribute token consumption on a per-user and per-subscription level without causing a high-cardinality metric explosion in Prometheus?
 
 === The Core Answer
 
-
+The platform transitions from high-cardinality Prometheus metrics to a structured log pipeline at the gateway level, powered by Loki, tracking metadata (user, subscription, model, token counts) for every API request into structured Loki log databases and exposing CSV exports via the gen AI studio console.
 
 ==== What is it?
 
-
+MaaS Showback (Technology Preview) is a structured log pipeline that tracks and attributes token consumption on a per-user and per-subscription level for billing and chargeback purposes.
 
 ==== How it works?
 
-
+The platform transitions from high-cardinality Prometheus metrics to a structured log pipeline at the gateway level, powered by Loki.
+Every API request tracks metadata (user, subscription, model, token counts).
+The metrics flow into structured Loki log databases.
+Users and administrators can access dedicated dashboards in the gen AI studio console showing precise token consumption and rate-limit violations, which can be exported in CSV format.
 
 ==== Enterprise Use Case Scenario
 
+An enterprise finance department allocates AI infrastructure costs back to individual business units (e.g., Marketing, HR).
+By checking the MaaS Showback dashboard, the platform operator exports a CSV showing that HR consumed 12 million tokens on a custom Granite model, while Marketing consumed 45 million tokens, so the finance department can run precise monthly billing.

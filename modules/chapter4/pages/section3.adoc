@@ -1,34 +1,79 @@
 = Multi-Tenancy for Enterprise AI
 
+Shared GPU clusters must be strictly partitioned to prevent tenants from accessing other groups' private data or monopolizing shared compute resources.
 
-=== The Developer's Challenge
+== Complete Multi-Tenancy Isolation [GA]
+
+=== The Isolation Rule
+
+Auto-enforce isolation across Network Namespaces, Data/Secrets, and Persistent Storage out of the box.
+
+=== Think First: Question
+
+When a new tenant project is created, how does RHAI auto-enforce strict security boundaries across networking, data, and storage to prevent cross-namespace access?
+
+=== The Core Answer
+
+The system automatically enforces default isolation policies: Network Namespaces deny cross-tenant traffic using standard OpenShift NetworkPolicies, Data/Secrets Isolation ensures secrets and environment variables are strictly scoped to the tenant namespace, and Storage Isolation ensures persistent volumes remain completely inaccessible to other namespaces.
+
+==== What is it?
+
+RHAI 3.5's Multi-Tenancy Architecture is a layered security framework that provides strict isolation across namespaces, RBAC, networking, and data out of the box.
+
+==== How it works?
+
+When a new tenant project is created, the system auto-enforces isolation policies:
+
+- *Network Namespace*: Denies cross-tenant traffic by default using standard OpenShift NetworkPolicies.
+- *Data/Secrets Isolation*: Ensures secrets and environment variables are strictly scoped to the tenant namespace.
+- *Storage Isolation*: Ensures persistent volumes are completely inaccessible to other namespaces.
+
+==== Enterprise Use Case Scenario
+
+A Cloud Service Provider (CSP) hosts an AI Factory serving multiple independent retail tenants on a single OpenShift cluster.
+If Tenant A is compromised or attempts to query Tenant B's namespace, the default network and storage policies block all cross-namespace communication, protecting proprietary model weights and customer datasets.
+
+== Dynamic Fair-Share GPU Scheduling [GA]
 
 [cols="1,2,3", options="header"]
 |===
 | Architectural Dimension
-|
-| RHAI 3.5 Innovation
+| Static GPU Quotas
+| Kueue Fair-Share Scheduling
 
-|
-|
-|
+| Cluster Utilization
+| Idle GPUs remain locked to inactive teams (35% utilization).
+| Dynamic Borrowing: Idle GPUs lent to active teams; priority preemption reclaims capacity (70-85% utilization).
 |===
+
+=== Persona Tension
+
+*SRE Lead*: How can we maximize cluster GPU utilization without violating tenant capacity guarantees when demand spikes?
+
+*Platform Engineer*: Kueue guarantees tenant quotas while dynamically lending idle GPUs, executing priority preemption when the quota owner submits jobs.
 
 === Think First: Question
 
-
+How does Kueue guarantee tenant GPU quotas while dynamically maximizing overall cluster utilization when tenant queues are idle?
 
 === The Core Answer
 
-
+Each tenant is assigned a guaranteed GPU quota; if a tenant's queue is empty, the Kueue-native scheduler automatically lends their idle GPU capacity to accelerate other workloads, and the moment the quota owner submits a job, Kueue executes priority-based preemption to reclaim the borrowed resources within a configurable grace period, increasing average cluster utilization from 35% up to 70–85%.
 
 ==== What is it?
 
-
+Built on upstream Kueue, this feature guarantees GPU quotas per tenant while dynamically lending idle compute resources to maximize overall cluster utilization.
 
 ==== How it works?
 
-
+Each tenant is assigned a guaranteed GPU quota.
+If Tenant A's queue is empty, the Kueue-native scheduler automatically lends their idle GPU capacity to Tenant B to accelerate their workloads.
+However, the moment Tenant A submits a job, Kueue executes priority-based preemption, reclaiming the borrowed resources within a configurable grace period, guaranteeing Tenant A receives their allocated capacity.
+This dynamic sharing increases average cluster utilization from 35% up to 70–85%.
 
 ==== Enterprise Use Case Scenario
 
+A supercomputing research center hosts a shared GPU cluster for various research groups.
+The Chemistry group is currently inactive, leaving their allocated GPUs idle.
+Kueue automatically lends these resources to the Physics group's large training run.
+When a Chemistry researcher submits a new forecasting job, the scheduler preempts the Physics workloads, returning the GPUs to the Chemistry queue.
