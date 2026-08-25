@@ -176,47 +176,71 @@
 </aside>
 <article class="doc">
 <h1 class="page">GPU-as-a-Service (GPUaaS)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Platform administrators need clear visibility into hardware allocations and Kueue scheduling metrics—without piecing together command-line checks.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_integrated_gpu_topology_utilization_dashboard_ga"><a class="anchor" href="#_integrated_gpu_topology_utilization_dashboard_ga"></a>Integrated GPU Topology &amp; Utilization Dashboard [GA]</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="_the_developers_challenge"><a class="anchor" href="#_the_developers_challenge"></a>The Developer&#8217;s Challenge</h3>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Architectural Dimension</th>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">RHAI 3.5 Innovation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
+<h3 id="_the_platform_admins_challenge"><a class="anchor" href="#_the_platform_admins_challenge"></a>The Platform Admin&#8217;s  Challenge</h3>
+<div class="paragraph">
+<p>How can platform admins diagnose pending training jobs and inspect GPU hardware allocations without CLI commands?</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_think_first_question"><a class="anchor" href="#_think_first_question"></a>Think First: Question</h3>
-
+<div class="paragraph">
+<p>Before examining the mechanics below: How does the Infrastructure dashboard retrieve real-time metric data securely?</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_the_core_answer"><a class="anchor" href="#_the_core_answer"></a>The Core Answer</h3>
+<div class="paragraph">
+<p>The page runs entirely as a front-end host app within the odh-dashboard, querying metrics directly from Thanos via secure POST endpoints, with access restricted to cluster administrators.</p>
+</div>
 <div class="sect3">
 <h4 id="_what_is_it"><a class="anchor" href="#_what_is_it"></a>What is it?</h4>
-
+<div class="paragraph">
+<p>The Infrastructure page (GA) is an admin-only view built directly into the RHAI dashboard that provides real-time, consolidated visibility into GPU utilization, hardware inventories, and Kueue borrowing dynamics.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_how_it_works"><a class="anchor" href="#_how_it_works"></a>How it works?</h4>
-
+<div class="paragraph">
+<p>The page is divided into 4 key visual sections:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Infrastructure Summary Cards</strong>: Shows total accelerator count (allocated vs allocatable), compute utilization %, and memory utilization %.</p>
+</li>
+<li>
+<p><strong>Cohort Overview (Kueue-native)</strong>: Displays utilization cards for each Kueue Cohort against the effective pool, alongside active admitted/pending workload counts.</p>
+</li>
+<li>
+<p><strong>Hardware Inventory</strong>: A bar chart grouping active GPUs by specific hardware models.</p>
+</li>
+<li>
+<p><strong>Borrowing &amp; Lending Trends</strong>: A 7-day line chart tracking resource-sharing trends across ClusterQueues.
+The page runs entirely as a front-end host app within the odh-dashboard, querying metrics directly from Thanos via secure POST endpoints, with access restricted to cluster administrators.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_enterprise_use_case_scenario"><a class="anchor" href="#_enterprise_use_case_scenario"></a>Enterprise Use Case Scenario</h4>
-
+<div class="paragraph">
+<p>A platform administrator receives a complaint from a data science team that their training jobs are stuck in a pending queue.
+Instead of running multiple terminal command-line checks, the admin opens the Infrastructure page.
+They instantly see that 100% of the cluster&#8217;s NVIDIA H200 GPUs are allocated, and Kueue is currently executing a priority preemption to reclaim borrowed capacity, allowing them to provide an accurate estimate of when the jobs will resume.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <nav class="pagination">
