@@ -11,7 +11,7 @@ Before examining the mechanics below: What is the primary operational benefit of
 
 === The Core Answer
 
-"It reduces configuration overhead and eliminates cross-network latency between single-modality models."
+It reduces configuration overhead and eliminates cross-network latency between single-modality models.
 
 ==== What is it?
 

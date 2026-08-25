@@ -18,9 +18,9 @@ RHAI 3.5 gives you the operational controls to keep competing workloads from dis
 
 === Persona Tension
 
-*SRE Lead*: "How do we keep competing workloads like live chat and background batch processing from disrupting one another on shared GPUs?"
+*SRE Lead*: How do we keep competing workloads like live chat and background batch processing from disrupting one another on shared GPUs?
 
-*Platform Engineer*: "We deploy SLO-Aware Serving in the llm-d inference engine to dynamically prioritize interactive traffic over background queues"
+*Platform Engineer*: We deploy SLO-Aware Serving in the llm-d inference engine to dynamically prioritize interactive traffic over background queues.
 
 === Think First: Question
 
@@ -28,7 +28,7 @@ Before examining the mechanics below: How does admission control guarantee laten
 
 === The Core Answer
 
-"The Endpoint Picker tracks request queues and KV cache utilization to route high-priority traffic ahead of low-priority workloads."
+The Endpoint Picker tracks request queues and KV cache utilization to route high-priority traffic ahead of low-priority workloads.
 
 ==== What is it?
 
@@ -50,9 +50,9 @@ During peak hours, interactive customer traffic surges. SLO-aware serving dynami
 
 === Persona Tension
 
-*SRE Lead*: "How do we prevent production downtime or performance degradation when transitioning between model versions?"
+*SRE Lead*: How do we prevent production downtime or performance degradation when transitioning between model versions?
 
-*Platform Engineer*: "Controlled Deployments allow us to safely test updates with live canary traffic and trigger automated rollbacks if performance metrics degrade."
+*Platform Engineer*: Controlled Deployments allow us to safely test updates with live canary traffic and trigger automated rollbacks if performance metrics degrade.
 
 === Think First: Question
 
@@ -60,7 +60,7 @@ Before examining the mechanics below: What mechanism protects the end-user exper
 
 === The Core Answer
 
-"The deployment engine monitors live performance metrics and automatically triggers a rollback to the previous stable engine upon detecting anomalies."
+The deployment engine monitors live performance metrics and automatically triggers a rollback to the previous stable engine upon detecting anomalies.
 
 ==== What is it?
 
@@ -97,7 +97,7 @@ Before examining the mechanics below: Why is disaggregated serving economically 
 
 === The Core Answer
 
-"By deploying on a disaggregated prefill/decode architecture, the firm scales prefill and decode nodes independently, maintaining real-time tool execution speeds while reducing overall GPU infrastructure costs by 40%."
+By deploying on a disaggregated prefill/decode architecture, the firm scales prefill and decode nodes independently, maintaining real-time tool execution speeds while reducing overall GPU infrastructure costs by 40%.
 
 ==== What is it?
 
@@ -131,9 +131,9 @@ By deploying on a disaggregated prefill/decode architecture, the firm scales pre
 
 === Persona Tension
 
-*SRE Lead*: "How do we prevent Out-of-Memory (OOM) crashes when models analyze massive documents or long multi-turn conversations?"
+*SRE Lead*: How do we prevent Out-of-Memory (OOM) crashes when models analyze massive documents or long multi-turn conversations?
 
-*Platform Engineer*: "KV Cache Offloading dynamically shifts cache segments from GPU VRAM to system CPU DRAM and NVMe storage, removing the memory ceiling."
+*Platform Engineer*: KV Cache Offloading dynamically shifts cache segments from GPU VRAM to system CPU DRAM and NVMe storage, removing the memory ceiling.
 
 === Think First: Question
 
@@ -141,7 +141,7 @@ Before examining the mechanics below: How does offloading KV cache eliminate the
 
 === The Core Answer
 
-"The engine swaps inactive context blocks to CPU or NVMe storage, retrieving them back into VRAM seamlessly when requested by the user."
+The engine swaps inactive context blocks to CPU or NVMe storage, retrieving them back into VRAM seamlessly when requested by the user.
 
 ==== What is it?
 

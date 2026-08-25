@@ -5,19 +5,22 @@ Enterprise teams in regulated industries need to verify that a model behaves saf
 == Garak Security & Safety Benchmarking Integration [GA]
 
 === The Governence Rule
-"Verify that a model behaves safely and reliably under adversarial conditions before promoting it to production."
+
+Verify that a model behaves safely and reliably under adversarial conditions before promoting it to production.
 
 === Persona Tension
 
-*SRE Lead*: "How can we verify that a model behaves safely under adversarial conditions before promoting it to production in a regulated environment"
+*SRE Lead*: How can we verify that a model behaves safely under adversarial conditions before promoting it to production in a regulated environment?
 
-*Platform Engineer*: "We integrate Garak benchmark results natively into the Model Catalog under the Safety & Security Insights tab to display a detailed risk profile for every validated model."
+*Platform Engineer*: We integrate Garak benchmark results natively into the Model Catalog under the Safety & Security Insights tab to display a detailed risk profile for every validated model.
 
 === Think First: Question
+
 Before examining the mechanics below: How does the Model Catalog display security risk profiles without requiring manual red-teaming for every imported model?
 
 === The Core Answer
-"The automated validation pipeline executes pre-configured Garak scans via the EvalHub REST API, ingesting structured JSON payloads directly into the Model Catalog UI."
+
+The automated validation pipeline executes pre-configured Garak scans via the EvalHub REST API, ingesting structured JSON payloads directly into the Model Catalog UI.
 
 ==== What is it?
 
@@ -41,7 +44,7 @@ Using the Model Catalog's Safety & Security Insights tab, platform administrator
 
 === The Developer's Challenge
 
-"What prevents our API calls from failing silently when models generate malformed arguments or invalid JSON schemas during execution?"
+What prevents our API calls from failing silently when models generate malformed arguments or invalid JSON schemas during execution?
 
 [cols="1,2,3", options="header"]
 |===
@@ -60,7 +63,7 @@ Before examining the mechanics below: How do developers ensure model tool invoca
 
 === The Core Answer
 
-"By selecting a model labeled with the Tool calling task filter in the RHAI Catalog, the development team starts with a pre-configured template, ensuring that tool invocations conform to the expected schema without custom client-side parsing code."
+By selecting a model labeled with the Tool calling task filter in the RHAI Catalog, the development team starts with a pre-configured template, ensuring that tool invocations conform to the expected schema without custom client-side parsing code.
 
 ==== What is it?
 

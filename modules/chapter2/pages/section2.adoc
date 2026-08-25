@@ -1,37 +1,40 @@
 = Post-Training and Inference-Time Scaling: Improve Model Reasoning
 
+Post-training optimization aligns models with domain-specific formatting and safety expectations—while keeping inference costs in check.
 
-==
+== Budget-Efficient Inference-Time Scaling [GA / DP]
 
-[cols="1,2,3", options="header"]
-|===
-| Architectural Dimension
-|
-| RHAI 3.5 Innovation
+=== The Cost Optimization Rule
 
-|
-|
-|
-|===
-
-=== The Governence Rule
+Dynamically increase model reasoning depth on difficult queries while stopping early on simple ones to optimize GPU compute utilization.
 
 === Persona Tension
 
-*SRE Lead*:
+*SRE Lead*: How do we prevent complex reasoning queries from driving up GPU compute costs across simple, routine requests?
 
-*Platform Engineer*:
+*Platform Engineer*: Inference-Time Scaling applies Adaptive Early Stopping to resolve simple queries in early evaluation batches while scaling depth for hard ones.
 
 === Think First: Question
 
+How does Inference-Time Scaling (ITS) dynamically adjust model reasoning depth across simple and complex queries to optimize GPU compute utilization?
+
 === The Core Answer
+
+Inference-Time Scaling introduces two self-consistency variants with Adaptive Early Stopping: Adaptive Self-Consistency (generating samples in exponentially growing batches like 2 -> 4 -> 8 and stopping as soon as a configurable supermajority threshold is met) and Beta Self-Consistency (firing requests concurrently and canceling outstanding ones the moment a Bayesian confidence threshold is reached).
 
 ==== What is it?
 
+Inference-Time Scaling (ITS) is a budget-aware serving capability that dynamically increases model reasoning depth on difficult queries while stopping early on simple ones, optimizing GPU compute utilization.
 
 ==== How it works?
 
+RHAI 3.5 introduces two self-consistency variants with Adaptive Early Stopping:
+
+- *Adaptive Self-Consistency*: Generates samples in exponentially growing batches (e.g., 2 -> 4 -> 8) and stops as soon as a configurable supermajority threshold (e.g., 75% agreement) is met.
+- *Beta Self-Consistency (Experimental)*: Fires requests concurrently and cancels outstanding ones the moment a Bayesian confidence threshold is reached.
 
 ==== Enterprise Use Case Scenario
 
+A tax consulting firm deploys a chatbot to answer tax law questions. Simple queries (e.g., "What is the standard deduction?") are resolved in the first batch of 2 samples, saving inference cost.
+Complex queries (e.g., "How does depreciation apply to a specific corporate merger?") trigger the full evaluation budget of 8 samples, ensuring high-fidelity reasoning when it is genuinely needed.
 
