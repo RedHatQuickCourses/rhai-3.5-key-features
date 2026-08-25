@@ -20,6 +20,24 @@ Each module represents a product pillar. Within each module, lessons are structu
 
 Duration: pass:[<span class="course-total-duration" aria-live="polite">…</span>]
 
+== Obejectives
+
+By the end of this training course, you should be able to:
+
+- Familarize yourself to deploy, govern, and optimize high-performance model serving on shared infrastructure while maintaining strict Service Level Objectives (SLOs), managing memory offloading, and establishing multimodal foundations.
+- Understand how to integrate enterprise datasets with machine learning models through automated pipelines, distributed post-training, and rigorous, multi-tenant AI safety and evaluation frameworks.
+- Understand the development and containment of autonomous AI workloads by building on standardized API layers, deploying pre-built templates, and enforcing kernel-level sandboxing security.
+- Gain the operational and administrative skills required to manage enterprise-scale AI clusters, focusing on tenant isolation, dynamic GPU scheduling, and centralized zero-configuration observability.
+
+== Prerequisties
+
+To successfully complete this course, you should possess the following foundational experience:
+
+- Strong familiarity with cluster operations, custom resource definitions (CRDs), namespace-level management, network policies, and role-based access control (RBAC).
+- Foundational understanding of large language models (LLMs), tokenization, temperature, Retrieval-Augmented Generation (RAG) architectures, and basic model serving pipelines.
+- Knowledge of deploying containerized applications, utilizing GitOps methodologies (like ArgoCD), and writing basic YAML manifests.
+- A high-level understanding of GPU resource allocation (e.g., NVIDIA vGPUs or physical accelerator scheduling).
+
 == Technology Preview Features
 
 Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process. For more information about the support scope of Red Hat Technology Preview features, see https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scop].
