@@ -179,61 +179,159 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>==</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Architectural Dimension</th>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">RHAI 3.5 Innovation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
+<p>Deploying data-intensive AI patterns requires transitioning unstructured documents and tabular datasets into production-ready endpoints with less manual work.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_the_governence_rule"><a class="anchor" href="#_the_governence_rule"></a>The Governence Rule</h3>
-
 </div>
-<div class="sect2">
-<h3 id="_persona_tension"><a class="anchor" href="#_persona_tension"></a>Persona Tension</h3>
-<div class="paragraph">
-<p><strong>SRE Lead</strong>:</p>
-</div>
-<div class="paragraph">
-<p><strong>Platform Engineer</strong>:</p>
-</div>
-</div>
+<div class="sect1">
+<h2 id="_autorag_platform_tp"><a class="anchor" href="#_autorag_platform_tp"></a>AutoRAG Platform [TP]</h2>
+<div class="sectionbody">
 <div class="sect2">
 <h3 id="_think_first_question"><a class="anchor" href="#_think_first_question"></a>Think First: Question</h3>
-
+<div class="paragraph">
+<p>How does AutoRAG automate the evaluation and determination of the optimal Retrieval-Augmented Generation (RAG) pipeline configuration for a specific dataset and use case?</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_the_core_answer"><a class="anchor" href="#_the_core_answer"></a>The Core Answer</h3>
+<div class="paragraph">
+<p>AutoRAG introduces a suite of enterprise features including Multilingual AutoRAG (natively processing German, Spanish, and Japanese documents), Contextual Retrieval (adding brief context summaries during chunking to prevent semantic loss), Deploy RAG Pattern as an Endpoint (deploying a validated configuration as a standard API endpoint with a single click), Visual Pipeline Debugging (providing step-by-step execution traces), and Natural Language Chatbot Testing.</p>
+</div>
 <div class="sect3">
 <h4 id="_what_is_it"><a class="anchor" href="#_what_is_it"></a>What is it?</h4>
-
+<div class="paragraph">
+<p>AutoRAG is an automated optimization platform built into the RHAI dashboard that evaluates and determines the optimal Retrieval-Augmented Generation (RAG) pipeline configuration for a specific dataset and use case.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_how_it_works"><a class="anchor" href="#_how_it_works"></a>How it works?</h4>
-
+<div class="paragraph">
+<p>AutoRAG 3.5 introduces a suite of enterprise features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Multilingual AutoRAG</strong>: Natively processes German, Spanish, and Japanese documents without upfront translation.</p>
+</li>
+<li>
+<p><strong>Contextual Retrieval</strong>: Automatically adds brief context summaries to individual document chunks during chunking, preventing semantic loss.</p>
+</li>
+<li>
+<p><strong>Deploy RAG Pattern as an Endpoint</strong>: Allows users to deploy a validated RAG configuration as a standard API endpoint (accessible via curl, Go, or Python) with a single click.</p>
+</li>
+<li>
+<p><strong>Visual Pipeline Debugging</strong>: Provides step-by-step execution traces to pinpoint where a RAG pipeline fails.</p>
+</li>
+<li>
+<p><strong>Natural Language Chatbot Testing</strong>: Allows conversational testing of the selected pattern before deployment.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_enterprise_use_case_scenario"><a class="anchor" href="#_enterprise_use_case_scenario"></a>Enterprise Use Case Scenario</h4>
-
+<div class="paragraph">
+<p>A global pharmaceutical giant has multi-lingual clinical trial documents in Spanish, Japanese, and English.
+They need a RAG system to answer research queries.
+Instead of manually tuning chunk sizes, embedding models, and vector stores, they run AutoRAG.
+AutoRAG evaluates hundreds of combinations, applies Contextual Retrieval to ensure fragments retain meaning, and exports a production-ready API endpoint—saving months of data engineering effort.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_automl_autogluon_serving_runtime_in_kserve_tp"><a class="anchor" href="#_automl_autogluon_serving_runtime_in_kserve_tp"></a>AutoML AutoGluon Serving Runtime in KServe [TP]</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_persona_tension"><a class="anchor" href="#_persona_tension"></a>Persona Tension</h3>
+<div class="paragraph">
+<p><strong>SRE Lead</strong>: Why should we write custom serving containers to deploy traditional predictive machine learning models trained on tabular data?</p>
+</div>
+<div class="paragraph">
+<p><strong>Platform Engineer</strong>: We don&#8217;t need to.
+KServe natively integrates the AutoGluon ServingRuntime to expose prediction endpoints directly from the AI hub leaderboard.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_think_first_question_2"><a class="anchor" href="#_think_first_question_2"></a>Think First: Question</h3>
+<div class="paragraph">
+<p>Before examining the mechanics below: How does native AutoGluon integration in KServe streamline model deployment?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_core_answer_2"><a class="anchor" href="#_the_core_answer_2"></a>The Core Answer</h3>
+<div class="paragraph">
+<p>It allows top-ranked tabular models to be registered and served via standard inference APIs using modelFormat: autogluon without custom containers.</p>
+</div>
+<div class="sect3">
+<h4 id="_what_is_it_2"><a class="anchor" href="#_what_is_it_2"></a>What is it?</h4>
+<div class="paragraph">
+<p>This feature integrates AutoGluon (an automated machine learning toolkit for tabular data) as a native serving runtime in KServe, closing the train-to-serve loop for traditional predictive AI.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_it_works_2"><a class="anchor" href="#_how_it_works_2"></a>How it works?</h4>
+<div class="paragraph">
+<p>RHAI AutoML allows users to train and rank machine learning models on a leaderboard.
+Once the top model is selected, administrators can register it in the AI hub and deploy it natively with modelFormat: autogluon.
+KServe provisions the AutoGluon ServingRuntime, allowing applications to score predictions via standard KServe v1/v2 inference APIs without custom containers.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_enterprise_use_case_scenario_2"><a class="anchor" href="#_enterprise_use_case_scenario_2"></a>Enterprise Use Case Scenario</h4>
+<div class="paragraph">
+<p>A retail bank uses AutoML to train a customer churn prediction model on historical transactional data.
+Previously, deploying the resulting AutoGluon model required writing a custom Flask container.
+With the new native runtime, the data science team promotes the churn model from the leaderboard directly to KServe, exposing a production-ready prediction endpoint in minutes.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_kubeflow_spark_operator_tp"><a class="anchor" href="#_kubeflow_spark_operator_tp"></a>Kubeflow Spark Operator [TP]</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_the_data_processing_rule"><a class="anchor" href="#_the_data_processing_rule"></a>The Data Processing Rule</h3>
+<div class="paragraph">
+<p>Orchestrate large-scale distributed Spark jobs directly from notebooks while managing pod scheduling and network policies natively.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_think_first_question_3"><a class="anchor" href="#_think_first_question_3"></a>Think First: Question</h3>
+<div class="paragraph">
+<p>How does the Kubeflow Spark Operator integrate with RHAI workbenches to unify data preparation with subsequent training and inference workflows on a single platform?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_core_answer_3"><a class="anchor" href="#_the_core_answer_3"></a>The Core Answer</h3>
+<div class="paragraph">
+<p>The operator is integrated directly with RHAI workbenches, allowing users to define, run, and manage distributed Spark workloads using SparkApplication custom resources from within their existing notebook environment for interactive, real-time job management.</p>
+</div>
+<div class="sect3">
+<h4 id="_what_is_it_3"><a class="anchor" href="#_what_is_it_3"></a>What is it?</h4>
+<div class="paragraph">
+<p>The Kubeflow Spark Operator (Technology Preview) integrates Apache Spark with RHAI, so users can orchestrate large-scale, distributed data-processing and preparation jobs directly from their workbench.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_it_works_3"><a class="anchor" href="#_how_it_works_3"></a>How it works?</h4>
+<div class="paragraph">
+<p>The operator is integrated directly with RHAI workbenches.
+Users can define, run, and manage distributed Spark workloads (using SparkApplication custom resources) from within their existing notebook environment.
+This integration enables interactive, real-time job management and unifies data preparation with subsequent training and inference workflows on a single platform.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_enterprise_use_case_scenario_3"><a class="anchor" href="#_enterprise_use_case_scenario_3"></a>Enterprise Use Case Scenario</h4>
+<div class="paragraph">
+<p>A smart-grid utility company processes gigabytes of hourly IoT sensor readings before feeding them into a forecasting model.
+Using the Kubeflow Spark Operator integration, a data engineer triggers a distributed Spark data-cleaning job directly from their Jupyter notebook workbench.
+RHAI handles the orchestration and monitoring of the Spark application on the cluster, preparing the dataset for training without the data scientist ever having to leave their workbench environment.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <nav class="pagination">
