@@ -1,8 +1,8 @@
 schemaVersion: 2.1.0
 metadata:
   name: rhai-3.5-key-features-dev
-  displayName: What's New in RHAI 3.5
-  description: What's New in RHAI 3.5 published using Antora
+  displayName: "Red Hat AI (RHAI) 3.5: New Key Features"
+  description: "Red Hat AI (RHAI) 3.5: New Key Features published using Antora"
   icon: https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg
   tags:
     - Node.js

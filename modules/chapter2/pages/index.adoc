@@ -1,7 +1,10 @@
-= Chapter 2
+= Connecting Data to Models
 
-In this section, we cover... FIXME
+Raw foundation models are functionally limited without access to enterprise data.
+RHAI 3.5 closes this gap with production-grade data integration pipelines, advanced model-tuning frameworks, and robust evaluation systems to build trustworthy AI applications.
 
+This section focuses on:
 
-- Add or remove section entries in the `antora.yaml` file as needed.
-- Ensure you create or delete the corresponding directory for the chapter accordingly.
+- AutoRAG and AutoML: From Enterprise Data to Production AI
+- Post-Training and Inference-Time Scaling: Improve Model Reasoning
+- AI Evaluations and AI Safety: Build Confidence Before Production

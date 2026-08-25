@@ -1,7 +1,8 @@
-= Chapter 3
+= Practical Agentic AI
 
-In this section, we cover... FIXME
+Red Hat AI 3.5 moves beyond basic model serving—delivering a governed, secure agentic platform built for production.
 
+This section focuses on:
 
-- Add or remove section entries in the `antora.yaml` file as needed.
-- Ensure you create or delete the corresponding directory for the chapter accordingly.
+- Agentic API Foundation: OGX (GA)
+- Pre-built Templates in AI Hub for Developer Productivity

@@ -1,30 +1,44 @@
-= An Example Quick Course
+= Red Hat AI (RHAI) 3.5: New Key Features
 :navtitle: Home
 
 == Introduction
 
-Course Title: Course title FIXME
+Course Title: Red Hat AI (RHAI) 3.5: New Key Features
 
 Description:
-Course description FIXME
+Welcome to the Red Hat AI (RHAI) 3.5 Enterprise Technical Training Course.
+This training guide covers the key architectural and functional updates in version 3.5.
+
+This course is designed around the four core product pillars that drive the RHAI 3.5 strategy:
+
+* Fast & Efficient Inference
+* Connecting Data to Models
+* Agentic AI
+* Platform Infrastructure, Scale & Security
+
+Each module represents a product pillar. Within each module, lessons are structured around the official Key Messages, with technical explanations, operational mechanics, and enterprise use-case scenarios.
 
 Duration: pass:[<span class="course-total-duration" aria-live="polite">…</span>]
 
-== Objectives
+== Technology Preview Features
 
-On completing this course, you should be able to:
+Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process. For more information about the support scope of Red Hat Technology Preview features, see https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Support Scop].
 
-* Observable, measurable objective...
-* Observable, measurable objective...
-* Observable, measurable objective...
+== Developer Preview Features
 
-== Prerequisites
+Developer Preview features are not supported by Red Hat in any way and are not functionally complete or production-ready. Do not use Developer Preview features for production or business-critical workloads. Developer Preview features provide early access to functionality in advance of possible inclusion in a Red Hat product offering. Customers can use these features to test functionality and provide feedback during the development process. Developer Preview features might not have any documentation, are subject to change or removal at any time, and have received limited testing. Red Hat might provide ways to submit feedback on Developer Preview features without an associated SLA. For more information about the support scope of Red Hat Developer Preview features, see https://access.redhat.com/support/offerings/devpreview/[Developer Preview Support Scope].
 
-This course assumes that you have the following prior experience:
+== Contributors
 
-* Course or experience...
-* Course or experience...
-* Course or experience...
+The PTL team acknowledges the valuable contributions of the following Red Hat associates:
+
+- Sarvesh Pandit (Principal Technical Training Developer)
+- Carlos Condado (Senior Product Marketing Manager, AI)
+- Will McGrath (Senior Principal Product Marketing Manager, AI)
+- Martin Isaksson (Principal Architect, AI)
+- Younes Ben Brahim (Principal Product Marketing Manager, AI)
+- Rutuja Deshmukh (Technical Training Developer)
+- Anna Swicegood (Learning Product Manager)
 
 NOTE: **Use of Artificial Intelligence:**
 This publication contains content or media that is generated or assisted by AI tools. All the Training deliverables have primarily human authorship, and all content was reviewed by a human domain expert.

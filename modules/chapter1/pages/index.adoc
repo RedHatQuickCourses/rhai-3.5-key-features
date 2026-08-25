@@ -1,7 +1,10 @@
-= Chapter 1
+= Fast & Efficient Inference
 
-In this section, we cover... FIXME
+Production-ready agentic AI requires inference capabilities that go beyond simple text completion.
+Red Hat AI 3.5 gives you the operational depth, model safety transparency, resource governance, and multimodal foundations to deploy and manage high-priority LLM workloads at scale.
 
+This section focuses on:
 
-- Add or remove section entries in the `antora.yaml` file as needed.
-- Ensure you create or delete the corresponding directory for the chapter accordingly.
+- Model Safety and Reliability Evidence Before Deployments
+- The Operational Controls Shared Inference Requires
+- The Foundation for AI Agents that Work Beyond Text

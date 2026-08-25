@@ -1,7 +1,11 @@
-= Chapter 4
+= Enterprise Platform Infrastructure, Scale & Security
 
-In this section, we cover... FIXME
+Scaling AI operations across your organization takes solid platform governance.
+Red Hat OpenShift AI 3.5 unifies safety, observability, multi-tenancy, and hardware acceleration into a single operational view.
 
+This section focuses on:
 
-- Add or remove section entries in the `antora.yaml` file as needed.
-- Ensure you create or delete the corresponding directory for the chapter accordingly.
+- AI Security: Automated Red Teaming and Security Insights
+- Measurable Enterprise AI: Zero-Configuration Observability
+- Multi-Tenancy for Enterprise AI
+- GPU-as-a-Service (GPUaaS)
