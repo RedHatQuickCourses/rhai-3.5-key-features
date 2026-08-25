@@ -12,7 +12,7 @@ metadata:
   language: JavaScript
   version: 2.1.1
 starterProjects:
-  - name: "rhai-3.5-key-features-dev"
+  - name: "rhai-3-5-key-features-dev"
     git:
       remotes:
         origin: 'https://github.com/RedHatTraining/rhai-3.5-key-features.git'
