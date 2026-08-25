@@ -103,12 +103,6 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../chapter3/section2.html">Pre-built Templates in AI Hub for Developer Productivity</a>
   </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#section3.adoc">section3.adoc</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#section4.adoc">section4.adoc</a>
-  </li>
 </ul>
   </li>
 </ul>
@@ -124,6 +118,12 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../chapter4/section2.html">Measurable Enterprise AI: Zero-Configuration Observability</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../chapter4/section3.html">Multi-Tenancy for Enterprise AI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../chapter4/section4.html">GPU-as-a-Service (GPUaaS)</a>
   </li>
 </ul>
   </li>
@@ -176,7 +176,52 @@
 </aside>
 <article class="doc">
 <h1 class="page">The Foundation for AI Agents that Work Beyond Text</h1>
-
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Enterprise AI use cases are evolving to require multimodal models that process images, audio, and documents alongside text.
+Servicing these needs on separate infrastructure silos adds operational complexity you don’t need.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_unified_multimodal_inference_vllm_omni_dp"><a class="anchor" href="#_unified_multimodal_inference_vllm_omni_dp"></a>Unified Multimodal Inference (vLLM Omni) [DP]</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_think_first_question"><a class="anchor" href="#_think_first_question"></a>Think First: Question</h3>
+<div class="paragraph">
+<p>Before examining the mechanics below: What is the primary operational benefit of serving vision, text, and audio models under one container configuration?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_core_answer"><a class="anchor" href="#_the_core_answer"></a>The Core Answer</h3>
+<div class="paragraph">
+<p>"It reduces configuration overhead and eliminates cross-network latency between single-modality models."</p>
+</div>
+<div class="sect3">
+<h4 id="_what_is_it"><a class="anchor" href="#_what_is_it"></a>What is it?</h4>
+<div class="paragraph">
+<p>vLLM Omni (Developer Preview) is an extension to the RHAI model serving layer that serves multiple input/output modalities—specifically text, audio, and images—within a single, unified serving configuration.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_it_works"><a class="anchor" href="#_how_it_works"></a>How it works?</h4>
+<div class="paragraph">
+<p>Instead of routing multimodal requests across separate model pipelines and infrastructure configurations, vLLM Omni hosts models capable of processing multiple modalities (e.g., vision-language models like Granite Vision) under a single KServe deployment.
+A request containing an image and a text prompt is received, processed, and responded to through the same container configuration, reusing the same physical GPU allocation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_enterprise_use_case_scenario"><a class="anchor" href="#_enterprise_use_case_scenario"></a>Enterprise Use Case Scenario</h4>
+<div class="paragraph">
+<p>An automotive manufacturer deploys an AI technician assistant on the factory floor.
+The assistant receives high-resolution photos of engine parts and voice clips describing mechanical symptoms, and responds with a text-based repair guide.
+With vLLM Omni, the manufacturer runs the entire application through a single, unified serving infrastructure on RHAI, reducing configuration overhead and eliminating cross-network latency between single-modality models.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="section2.html">The Operational Controls Shared Inference Requires</a></span>
   <span class="next"><a href="../chapter2/index.html">Connecting Data to Models</a></span>

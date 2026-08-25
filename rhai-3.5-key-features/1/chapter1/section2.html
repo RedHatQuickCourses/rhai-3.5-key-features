@@ -103,12 +103,6 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../chapter3/section2.html">Pre-built Templates in AI Hub for Developer Productivity</a>
   </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#section3.adoc">section3.adoc</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#section4.adoc">section4.adoc</a>
-  </li>
 </ul>
   </li>
 </ul>
@@ -124,6 +118,12 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../chapter4/section2.html">Measurable Enterprise AI: Zero-Configuration Observability</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../chapter4/section3.html">Multi-Tenancy for Enterprise AI</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../chapter4/section4.html">GPU-as-a-Service (GPUaaS)</a>
   </li>
 </ul>
   </li>
@@ -176,7 +176,262 @@
 </aside>
 <article class="doc">
 <h1 class="page">The Operational Controls Shared Inference Requires</h1>
-
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Enterprise teams run agentic pipelines, batch processing jobs, and latency-sensitive API calls on shared infrastructure.
+RHAI 3.5 gives you the operational controls to keep competing workloads from disrupting one another.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_slo_aware_serving_ga"><a class="anchor" href="#_slo_aware_serving_ga"></a>SLO-Aware Serving [GA]</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Architectural Dimension</th>
+<th class="tableblock halign-left valign-top">Traditional Serving</th>
+<th class="tableblock halign-left valign-top">RHAI 3.5 Innovation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Traffic Prioritization</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single tenant monopolization; batch queues starve live interactive calls.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SLO-Aware Serving: Endpoint Picker (EPP) tracks queues/KV cache to prioritize live traffic within TTFT thresholds.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_persona_tension"><a class="anchor" href="#_persona_tension"></a>Persona Tension</h3>
+<div class="paragraph">
+<p><strong>SRE Lead</strong>: "How do we keep competing workloads like live chat and background batch processing from disrupting one another on shared GPUs?"</p>
+</div>
+<div class="paragraph">
+<p><strong>Platform Engineer</strong>: "We deploy SLO-Aware Serving in the llm-d inference engine to dynamically prioritize interactive traffic over background queues"</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_think_first_question"><a class="anchor" href="#_think_first_question"></a>Think First: Question</h3>
+<div class="paragraph">
+<p>Before examining the mechanics below: How does admission control guarantee latency targets for interactive requests without starving asynchronous batch queues?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_core_answer"><a class="anchor" href="#_the_core_answer"></a>The Core Answer</h3>
+<div class="paragraph">
+<p>"The Endpoint Picker tracks request queues and KV cache utilization to route high-priority traffic ahead of low-priority workloads."</p>
+</div>
+<div class="sect3">
+<h4 id="_what_is_it"><a class="anchor" href="#_what_is_it"></a>What is it?</h4>
+<div class="paragraph">
+<p>SLO-Aware Serving is an admission control and traffic shaping mechanism in the llm-d distributed inference engine that guarantees high-priority, latency-sensitive requests meet their Service Level Objectives (SLOs) when sharing GPUs with lower-priority workloads.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_it_works"><a class="anchor" href="#_how_it_works"></a>How it works?</h4>
+<div class="paragraph">
+<p>he system introduces admission control, fairness policies, and starvation protection.
+The Endpoint Picker (EPP) tracks request queues and KV cache utilization.
+High-priority interactive requests are routed ahead of batch or low-priority workloads.
+It prevents any single tenant from monopolizing shared GPU resources, ensuring latency-sensitive requests (e.g., live chatbot responses) are served within their target Time-to-First-Token (TTFT) threshold while gracefully delaying asynchronous batch queues without starving them.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_enterprise_use_case_scenario"><a class="anchor" href="#_enterprise_use_case_scenario"></a>Enterprise Use Case Scenario</h4>
+<div class="paragraph">
+<p>A telecommunications provider (such as Telenor) runs a shared GPU cluster serving both an interactive customer chat system (demanding low latency) and a nightly batch job summarizing customer service transcripts.
+During peak hours, interactive customer traffic surges. SLO-aware serving dynamically prioritizes the live chat requests over the batch processing, maintaining the SLA of the consumer chat application without needing to over-provision dedicated GPU pools.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_controlled_deployments_canary_and_rolling_updates_ga"><a class="anchor" href="#_controlled_deployments_canary_and_rolling_updates_ga"></a>Controlled Deployments (Canary and Rolling Updates) [GA]</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_persona_tension_2"><a class="anchor" href="#_persona_tension_2"></a>Persona Tension</h3>
+<div class="paragraph">
+<p><strong>SRE Lead</strong>: "How do we prevent production downtime or performance degradation when transitioning between model versions?"</p>
+</div>
+<div class="paragraph">
+<p><strong>Platform Engineer</strong>: "Controlled Deployments allow us to safely test updates with live canary traffic and trigger automated rollbacks if performance metrics degrade."</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_think_first_question_2"><a class="anchor" href="#_think_first_question_2"></a>Think First: Question</h3>
+<div class="paragraph">
+<p>Before examining the mechanics below: What mechanism protects the end-user experience when a latency anomaly occurs during a model upgrade?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_core_answer_2"><a class="anchor" href="#_the_core_answer_2"></a>The Core Answer</h3>
+<div class="paragraph">
+<p>"The deployment engine monitors live performance metrics and automatically triggers a rollback to the previous stable engine upon detecting anomalies."</p>
+</div>
+<div class="sect3">
+<h4 id="_what_is_it_2"><a class="anchor" href="#_what_is_it_2"></a>What is it?</h4>
+<div class="paragraph">
+<p>Controlled Deployments is a model lifecycle management feature that allows platform teams to safely deploy, test, and transition between model versions in production with zero downtime and automated rollback.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_it_works_2"><a class="anchor" href="#_how_it_works_2"></a>How it works?</h4>
+<div class="paragraph">
+<p>The platform supports rolling updates, canary releases, and inference-metric-based rollback.
+When upgrading a model, administrators can route a small fraction (e.g., 5%) of live production traffic to the new version.
+The system monitors live performance metrics (request success, latency, error rates). If performance degrades below a specified threshold, the system automatically triggers an automated rollback, reverting traffic to the previous version.
+In-flight requests on the newer model are allowed to complete gracefully before the pods are decommissioned.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_enterprise_use_case_scenario_2"><a class="anchor" href="#_enterprise_use_case_scenario_2"></a>Enterprise Use Case Scenario</h4>
+<div class="paragraph">
+<p>An e-commerce retailer is upgrading its product recommendation LLM from version 1.0 to 1.1. During the transition, a sudden spike in latency occurs on the new version due to an un-optimized serving parameter.
+RHAI&#8217;s controlled deployment engine detects the latency anomaly and automatically rolls back all traffic to the stable v1.0 engine, protecting the customer checkout experience from disruption.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tool_calling_through_disaggregated_serving_path_ga"><a class="anchor" href="#_tool_calling_through_disaggregated_serving_path_ga"></a>Tool Calling Through Disaggregated Serving Path [GA]</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Architectural Dimension</th>
+<th class="tableblock halign-left valign-top">Traditional Serving</th>
+<th class="tableblock halign-left valign-top">RHAI 3.5 Innovation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Execution Topology</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Combined prefill and decode execution; scaling breaks stateful connections.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disaggregated Serving: Prefill and decode split onto dedicated pools while preserving tool-use structures.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_think_first_question_3"><a class="anchor" href="#_think_first_question_3"></a>Think First: Question</h3>
+<div class="paragraph">
+<p>Before examining the mechanics below: Why is disaggregated serving economically advantageous for agents processing massive prompts with brief outputs?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_core_answer_3"><a class="anchor" href="#_the_core_answer_3"></a>The Core Answer</h3>
+<div class="paragraph">
+<p>"By deploying on a disaggregated prefill/decode architecture, the firm scales prefill and decode nodes independently, maintaining real-time tool execution speeds while reducing overall GPU infrastructure costs by 40%."</p>
+</div>
+<div class="sect3">
+<h4 id="_what_is_it_3"><a class="anchor" href="#_what_is_it_3"></a>What is it?</h4>
+<div class="paragraph">
+<p>Disaggregated serving splits model execution into separate prefill (prompt processing) and decode (token generation) phases on dedicated GPU pools.
+In RHAI 3.5, Tool Calling is fully supported through this disaggregated architecture, so teams no longer have to choose between infrastructure scale and agent capability.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_it_works_3"><a class="anchor" href="#_how_it_works_3"></a>How it works?</h4>
+<div class="paragraph">
+<p>Upstream prefill nodes ingest the initial prompt and tool-use schemas, while downstream decode nodes generate the tool call tokens.
+Previously, distributed cluster routing broke the stateful connection required for schema-compliant tool calls.
+RHAI 3.5 ensures that the disaggregated serving path correctly preserves and completes tool-use structures across node boundaries, allowing developers to scale their model-serving layer across multiple compute nodes without breaking agent capability.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_enterprise_use_case_scenario_3"><a class="anchor" href="#_enterprise_use_case_scenario_3"></a>Enterprise Use Case Scenario</h4>
+<div class="paragraph">
+<p>An insurance firm deploys a complex claim processing agent that must query multiple SQL databases and process long claim PDFs.
+The prompt sizes are massive (requiring high prefill compute), but the final tool call is concise (low decode compute).
+By deploying on a disaggregated prefill/decode architecture, the firm scales prefill and decode nodes independently, maintaining real-time tool execution speeds while reducing overall GPU infrastructure costs by 40%.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_kv_cache_cpu_and_nvme_offloading_ga_dp"><a class="anchor" href="#_kv_cache_cpu_and_nvme_offloading_ga_dp"></a>KV Cache CPU and NVMe Offloading [GA / DP]</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Architectural Dimension</th>
+<th class="tableblock halign-left valign-top">Traditional Memory Limits</th>
+<th class="tableblock halign-left valign-top">RHAI 3.5 Innovation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Context Memory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GPU VRAM limits force context truncation or cause Out-of-Memory crashes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cache Offloading: Dynamic shift of KV cache to CPU DRAM (GA) and NVMe storage (DP).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_persona_tension_3"><a class="anchor" href="#_persona_tension_3"></a>Persona Tension</h3>
+<div class="paragraph">
+<p><strong>SRE Lead</strong>: "How do we prevent Out-of-Memory (OOM) crashes when models analyze massive documents or long multi-turn conversations?"</p>
+</div>
+<div class="paragraph">
+<p><strong>Platform Engineer</strong>: "KV Cache Offloading dynamically shifts cache segments from GPU VRAM to system CPU DRAM and NVMe storage, removing the memory ceiling."</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_think_first_question_4"><a class="anchor" href="#_think_first_question_4"></a>Think First: Question</h3>
+<div class="paragraph">
+<p>Before examining the mechanics below: How does offloading KV cache eliminate the need to truncate context in long-document processing?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_core_answer_4"><a class="anchor" href="#_the_core_answer_4"></a>The Core Answer</h3>
+<div class="paragraph">
+<p>"The engine swaps inactive context blocks to CPU or NVMe storage, retrieving them back into VRAM seamlessly when requested by the user."</p>
+</div>
+<div class="sect3">
+<h4 id="_what_is_it_4"><a class="anchor" href="#_what_is_it_4"></a>What is it?</h4>
+<div class="paragraph">
+<p>KV Cache Offloading is a memory optimization capability in the vLLM engine that allows the Key-Value (KV) cache to be shifted from high-cost GPU VRAM to host system memory (CPU DRAM) and fast storage (NVMe), eliminating the "context wall" that limits conversation length.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_it_works_4"><a class="anchor" href="#_how_it_works_4"></a>How it works?</h4>
+<div class="paragraph">
+<p>In RHAI 3.5, KV Cache CPU offloading is Generally Available (GA), while NVMe storage offload is in Developer Preview (DP).
+When an active conversation or long document ingestion exceeds the physical limits of GPU VRAM, the engine dynamically transfers older or inactive segments of the KV cache to CPU memory, or further down to a POSIX NVMe filesystem tier.
+When the user returns to those context blocks, the system swaps them back into VRAM.
+This process removes the memory ceiling that typically forces agents to truncate or summarize long conversations.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_enterprise_use_case_scenario_4"><a class="anchor" href="#_enterprise_use_case_scenario_4"></a>Enterprise Use Case Scenario</h4>
+<div class="paragraph">
+<p>A legal tech corporation runs an AI document-review assistant that analyzes 500-page contract files.
+Normally, loading the entire context of several documents simultaneously would cause the model&#8217;s pod to crash with an Out-of-Memory (OOM) error or force context truncation (degrading review accuracy).
+With CPU and NVMe cache offloading, the assistant retains the entire context of the legal document across multi-turn queries, ensuring high-fidelity reasoning over the complete file.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="section1.html">Model Safety and Reliability Evidence Before Deployments</a></span>
   <span class="next"><a href="section3.html">The Foundation for AI Agents that Work Beyond Text</a></span>
