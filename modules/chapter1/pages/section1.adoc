@@ -1,3 +1,80 @@
 = Model Safety and Reliability Evidence Before Deployments
 
+Enterprise teams in regulated industries need to verify that a model behaves safely and reliably under adversarial conditions before promoting it to production.
 
+== Garak Security & Safety Benchmarking Integration [GA]
+
+=== The Governence Rule
+"Verify that a model behaves safely and reliably under adversarial conditions before promoting it to production."
+
+=== Persona Tension
+
+*SRE Lead*: "How can we verify that a model behaves safely under adversarial conditions before promoting it to production in a regulated environment"
+
+*Platform Engineer*: "We integrate Garak benchmark results natively into the Model Catalog under the Safety & Security Insights tab to display a detailed risk profile for every validated model."
+
+=== Think First: Question
+Before examining the mechanics below: How does the Model Catalog display security risk profiles without requiring manual red-teaming for every imported model?
+
+=== The Core Answer
+"The automated validation pipeline executes pre-configured Garak scans via the EvalHub REST API, ingesting structured JSON payloads directly into the Model Catalog UI."
+
+==== What is it?
+
+Garak (Generative AI Red-teaming & Assessment Kit) is an open-source security scanning framework specifically designed to probe LLMs for vulnerabilities.
+In RHAI 3.5, Garak benchmark results are natively integrated into the platform's Model Catalog under the Safety & Security Insights tab, providing a detailed risk profile for every validated model.
+
+==== How it works?
+
+During the automated model validation pipeline, the model validation team triggers pre-configured security evaluation collections (red teaming, prompt injection, jailbreaking, and data privacy/PII leakage scans) via the EvalHub REST API.
+These scans run adversarial prompts against the model endpoint.
+The resulting structured JSON payloads are ingested by the Model Catalog's BFF (Backend-for-Frontend) and displayed in the UI as an Evaluation benchmarks table.
+This table includes columns for evaluation name, category, benchmark, description, and numeric result score.
+
+==== Enterprise Use Case Scenario
+
+A financial services institution is deploying an on-premise, air-gapped LLM to assist with retail banking customer queries.
+Due to strict compliance requirements under the EU AI Act and NIST AI RMF, they cannot pull models from public repositories without proof of safety.
+Using the Model Catalog's Safety & Security Insights tab, platform administrators can immediately verify the model's resistance to jailbreaking and prompt injection, bypassing weeks of manual red-teaming and legal approvals.
+
+== Tool-Calling Validation [GA]
+
+=== The Developer's Challenge
+
+"What prevents our API calls from failing silently when models generate malformed arguments or invalid JSON schemas during execution?"
+
+[cols="1,2,3", options="header"]
+|===
+| Architectural Dimension
+| Traditional Validation
+| RHAI 3.5 Innovation
+
+| Tool Execution
+| Custom client-side parsing code required to handle malformed arguments.
+| Tool-Calling Validation: Confirmed models display validated vllm serve arguments directly in the catalog.
+|===
+
+=== Think First: Question
+
+Before examining the mechanics below: How do developers ensure model tool invocations conform to expected schemas without writing custom client-side parsing code?
+
+=== The Core Answer
+
+"By selecting a model labeled with the Tool calling task filter in the RHAI Catalog, the development team starts with a pre-configured template, ensuring that tool invocations conform to the expected schema without custom client-side parsing code."
+
+==== What is it?
+
+Tool-Calling Validation is a quality verification layer in RHAI 3.5 that guarantees selected models are capable of reliably executing tool calls (such as API invocations and database queries) under standard enterprise conditions.
+
+==== How it works?
+
+An initial set of high-demand models is validated by the Red Hat Model Validation team specifically for tool-calling capabilities.
+This validation tests whether a model correctly structures invocations, accurately passes arguments, and correctly handles tool response schemas.
+Models with confirmed support display a Validated Arguments section on their Model Details page in the Model Catalog.
+Users can expand the Tool Calling panel to view and copy the exact vllm serve CLI arguments (e.g., --tool-call-parser, --chat-template, --enable-auto-tool-choice) required for correct deployment.
+
+==== Enterprise Use Case Scenario
+
+A logistics company builds a customer service agent that needs to invoke a proprietary parcel-tracking API.
+If the model generates malformed arguments or invalid JSON schemas, the API call fails silently.
+By selecting a model labeled with the Tool calling task filter in the RHAI Catalog, the development team starts with a pre-configured template, ensuring that tool invocations conform to the expected schema without custom client-side parsing code.

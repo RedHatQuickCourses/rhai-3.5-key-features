@@ -1,3 +1,29 @@
 = The Foundation for AI Agents that Work Beyond Text
 
+Enterprise AI use cases are evolving to require multimodal models that process images, audio, and documents alongside text.
+Servicing these needs on separate infrastructure silos adds operational complexity you don’t need.
 
+== Unified Multimodal Inference (vLLM Omni) [DP]
+
+=== Think First: Question
+
+Before examining the mechanics below: What is the primary operational benefit of serving vision, text, and audio models under one container configuration?
+
+=== The Core Answer
+
+"It reduces configuration overhead and eliminates cross-network latency between single-modality models."
+
+==== What is it?
+
+vLLM Omni (Developer Preview) is an extension to the RHAI model serving layer that serves multiple input/output modalities—specifically text, audio, and images—within a single, unified serving configuration.
+
+==== How it works?
+
+Instead of routing multimodal requests across separate model pipelines and infrastructure configurations, vLLM Omni hosts models capable of processing multiple modalities (e.g., vision-language models like Granite Vision) under a single KServe deployment.
+A request containing an image and a text prompt is received, processed, and responded to through the same container configuration, reusing the same physical GPU allocation.
+
+==== Enterprise Use Case Scenario
+
+An automotive manufacturer deploys an AI technician assistant on the factory floor.
+The assistant receives high-resolution photos of engine parts and voice clips describing mechanical symptoms, and responds with a text-based repair guide.
+With vLLM Omni, the manufacturer runs the entire application through a single, unified serving infrastructure on RHAI, reducing configuration overhead and eliminating cross-network latency between single-modality models.
