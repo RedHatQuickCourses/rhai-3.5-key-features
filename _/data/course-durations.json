@@ -1,5 +1,5 @@
 {
-  "totalSeconds": 1318,
+  "totalSeconds": 1474,
   "pageCount": 18,
   "pages": [
     {
@@ -55,12 +55,12 @@
     {
       "module": "chapter3",
       "page": "section1.adoc",
-      "seconds": 3
+      "seconds": 90
     },
     {
       "module": "chapter3",
       "page": "section2.adoc",
-      "seconds": 3
+      "seconds": 72
     },
     {
       "module": "chapter4",

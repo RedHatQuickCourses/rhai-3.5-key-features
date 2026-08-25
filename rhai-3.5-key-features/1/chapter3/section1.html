@@ -176,8 +176,17 @@
 </aside>
 <article class="doc">
 <h1 class="page">Agentic API Foundation: OGX (GA)</h1>
-<div class="sect2">
-<h3 id="_the_developers_challenge"><a class="anchor" href="#_the_developers_challenge"></a>The Developer&#8217;s Challenge</h3>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Building AI agents takes more than raw model endpoints.
+You need a unified, stable API layer to coordinate reasoning, data retrieval, and real-world execution.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ogx_ga_apis_ga"><a class="anchor" href="#_ogx_ga_apis_ga"></a>OGX GA APIs [GA]</h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -187,36 +196,64 @@
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Architectural Dimension</th>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">RHAI 3.5 Innovation</th>
+<th class="tableblock halign-left valign-top">Custom Orchestration</th>
+<th class="tableblock halign-left valign-top">OGX GA APIs</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Agent State &amp; Multi-Turn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom state-tracking code and custom document parsers.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standardized APIs: Responses API manages tool loops; File Processor with Docling parses documents.</p></td>
 </tr>
 </tbody>
 </table>
-</div>
 <div class="sect2">
 <h3 id="_think_first_question"><a class="anchor" href="#_think_first_question"></a>Think First: Question</h3>
-
+<div class="paragraph">
+<p>How does OGX deliver a standardized, open-source API layer that abstracts complex agent interactions without custom orchestration code?</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_the_core_answer"><a class="anchor" href="#_the_core_answer"></a>The Core Answer</h3>
+<div class="paragraph">
+<p>OGX delivers a standardized, open-source API layer that abstracts complex agent interactions via the Responses API (standardizing multi-turn interactions, maintaining chat history, managing state, and coordinating sequential tool calls), the File Processor API with Docling Integration (ingesting and parsing complex PDF, DOCX, and image documents into structured markdown), and Built-in RAG Capabilities connecting retrieval pipelines directly to the inference layer.</p>
+</div>
 <div class="sect3">
 <h4 id="_what_is_it"><a class="anchor" href="#_what_is_it"></a>What is it?</h4>
-
+<div class="paragraph">
+<p>OGX (formerly Llama Stack) is the production-ready API foundation for agentic AI on OpenShift AI.
+In version 3.5, the core OGX endpoints graduate to General Availability (GA).</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_how_it_works"><a class="anchor" href="#_how_it_works"></a>How it works?</h4>
-
+<div class="paragraph">
+<p>OGX delivers a standardized, open-source API layer that abstracts complex agent interactions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Responses API</strong>: Standardizes multi-turn interactions, maintaining chat history, managing state, and coordinating sequential tool calls without custom orchestration code.</p>
+</li>
+<li>
+<p><strong>File Processor API with Docling Integration</strong>: Ingests and parses complex PDF, DOCX, and image documents, converting them into structured, vector-ready markdown.</p>
+</li>
+<li>
+<p><strong>Built-in RAG Capabilities</strong>: Connects retrieval pipelines directly to the inference layer.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_enterprise_use_case_scenario"><a class="anchor" href="#_enterprise_use_case_scenario"></a>Enterprise Use Case Scenario</h4>
-
+<div class="paragraph">
+<p>A government agency is building a virtual advisor to answer public queries about tax filings.
+The advisor must hold a multi-turn conversation, ingest tax booklets (using the Docling-integrated File Processor API), and look up real-time tax brackets using database tools.
+With OGX, developers implement this complex reasoning loop in a single weekend by building on the standardized Responses API, knowing the deployment is fully supported under Red Hat&#8217;s enterprise SLA.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <nav class="pagination">
