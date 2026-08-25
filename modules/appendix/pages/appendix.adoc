@@ -1,7 +1,13 @@
 = Appendix
 
-FIXME: Content for Appendix...
-
 == Resources
 
 link:{attachmentsdir}/{page-component-name}.pdf[Download Course PDF]
+
+https://docs.redhat.com/en/documentation/red_hat_ai/3[Red Hat AI 3 Documentation]
+
+https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.5/[Red Hat OpenShift AI Self-managed 3.5]
+
+https://docs.redhat.com/en/documentation/red_hat_ai_inference/3.5[Red Hat AI Inference 3.5]
+
+https://docs.redhat.com/en/documentation/red_hat_enterprise_linux_ai/3.5[Red Hat Enterprise Linux AI 3.5]
