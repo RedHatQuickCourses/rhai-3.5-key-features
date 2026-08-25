@@ -1,34 +1,44 @@
 = Agentic API Foundation: OGX (GA)
 
-=== The Developer's Challenge
+Building AI agents takes more than raw model endpoints.
+You need a unified, stable API layer to coordinate reasoning, data retrieval, and real-world execution.
+
+== OGX GA APIs [GA]
 
 [cols="1,2,3", options="header"]
 |===
 | Architectural Dimension
-|
-| RHAI 3.5 Innovation
+| Custom Orchestration
+| OGX GA APIs
 
-|
-|
-|
+| Agent State & Multi-Turn
+| Custom state-tracking code and custom document parsers.
+| Standardized APIs: Responses API manages tool loops; File Processor with Docling parses documents.
 |===
 
 === Think First: Question
 
-
+How does OGX deliver a standardized, open-source API layer that abstracts complex agent interactions without custom orchestration code?
 
 === The Core Answer
 
-
+OGX delivers a standardized, open-source API layer that abstracts complex agent interactions via the Responses API (standardizing multi-turn interactions, maintaining chat history, managing state, and coordinating sequential tool calls), the File Processor API with Docling Integration (ingesting and parsing complex PDF, DOCX, and image documents into structured markdown), and Built-in RAG Capabilities connecting retrieval pipelines directly to the inference layer.
 
 ==== What is it?
 
-
+OGX (formerly Llama Stack) is the production-ready API foundation for agentic AI on OpenShift AI.
+In version 3.5, the core OGX endpoints graduate to General Availability (GA).
 
 ==== How it works?
 
+OGX delivers a standardized, open-source API layer that abstracts complex agent interactions:
 
+- *Responses API*: Standardizes multi-turn interactions, maintaining chat history, managing state, and coordinating sequential tool calls without custom orchestration code.
+- *File Processor API with Docling Integration*: Ingests and parses complex PDF, DOCX, and image documents, converting them into structured, vector-ready markdown.
+- *Built-in RAG Capabilities*: Connects retrieval pipelines directly to the inference layer.
 
 ==== Enterprise Use Case Scenario
 
-
+A government agency is building a virtual advisor to answer public queries about tax filings.
+The advisor must hold a multi-turn conversation, ingest tax booklets (using the Docling-integrated File Processor API), and look up real-time tax brackets using database tools.
+With OGX, developers implement this complex reasoning loop in a single weekend by building on the standardized Responses API, knowing the deployment is fully supported under Red Hat's enterprise SLA.
