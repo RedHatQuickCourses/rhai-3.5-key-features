@@ -48,7 +48,7 @@ commands:
       workingDir: ${PROJECT_SOURCE}
       group:
         kind: run
-        isDefault: true
+        isDefault: false
   - id: 2-serve
     exec:
       component: runtime
