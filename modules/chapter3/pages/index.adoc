@@ -1,4 +1,4 @@
-= Practical Agentic AI
+= Agentic AI
 
 Red Hat AI 3.5 moves beyond basic model serving—delivering a governed, secure agentic platform built for production.
 
