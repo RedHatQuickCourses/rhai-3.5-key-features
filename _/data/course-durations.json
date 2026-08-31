@@ -1,11 +1,11 @@
 {
-  "totalSeconds": 2052,
+  "totalSeconds": 2053,
   "pageCount": 18,
   "pages": [
     {
       "module": "ROOT",
       "page": "index.adoc",
-      "seconds": 171
+      "seconds": 172
     },
     {
       "module": "chapter1",
