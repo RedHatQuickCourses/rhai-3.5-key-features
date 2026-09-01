@@ -195,7 +195,7 @@
 <div class="sect2">
 <h3 id="_the_core_answer"><a class="anchor" href="#_the_core_answer"></a>The Core Answer</h3>
 <div class="paragraph">
-<p>AutoRAG introduces a suite of enterprise features including Multilingual AutoRAG (natively processing German, Spanish, and Japanese documents), Contextual Retrieval (adding brief context summaries during chunking to prevent semantic loss), Deploy RAG Pattern as an Endpoint (deploying a validated configuration as a standard API endpoint with a single click), Visual Pipeline Debugging (providing step-by-step execution traces), and Natural Language Chatbot Testing.</p>
+<p>AutoRAG introduces a suite of enterprise features including Multilingual AutoRAG (natively processing German, Spanish, and Japanese documents), Contextual Retrieval (adding brief context summaries during chunking to prevent semantic loss), Deploy RAG Pattern as an Endpoint (deploying a validated configuration as a standard API such as curl, Node.js, Go, Python), Visual Pipeline Debugging (providing step-by-step execution traces), and Natural Language Chatbot Testing.</p>
 </div>
 <div class="sect3">
 <h4 id="_what_is_it"><a class="anchor" href="#_what_is_it"></a>What is it?</h4>
@@ -217,7 +217,7 @@
 <p><strong>Contextual Retrieval</strong>: Automatically adds brief context summaries to individual document chunks during chunking, preventing semantic loss.</p>
 </li>
 <li>
-<p><strong>Deploy RAG Pattern as an Endpoint</strong>: Allows users to deploy a validated RAG configuration as a standard API endpoint (accessible via curl, Go, or Python) with a single click.</p>
+<p><strong>Deploy RAG Pattern as an Endpoint</strong>: Allows users to deploy a validated RAG configuration as a standard API (accessible via curl, Go, or Python).</p>
 </li>
 <li>
 <p><strong>Visual Pipeline Debugging</strong>: Provides step-by-step execution traces to pinpoint where a RAG pipeline fails.</p>
@@ -234,7 +234,7 @@
 <p>A global pharmaceutical giant has multi-lingual clinical trial documents in Spanish, Japanese, and English.
 They need a RAG system to answer research queries.
 Instead of manually tuning chunk sizes, embedding models, and vector stores, they run AutoRAG.
-AutoRAG evaluates hundreds of combinations, applies Contextual Retrieval to ensure fragments retain meaning, and exports a production-ready API endpoint—saving months of data engineering effort.</p>
+AutoRAG applies Contextual Retrieval to ensure fragments retain meaning, and exports a production-ready API endpoint—saving months of data engineering effort.</p>
 </div>
 </div>
 </div>
@@ -250,7 +250,7 @@ AutoRAG evaluates hundreds of combinations, applies Contextual Retrieval to ensu
 </div>
 <div class="paragraph">
 <p><strong>Platform Engineer</strong>: We don&#8217;t need to.
-KServe natively integrates the AutoGluon ServingRuntime to expose prediction endpoints directly from the AI hub leaderboard.</p>
+KServe natively integrates the AutoGluon ServingRuntime to expose prediction endpoints directly from the Model Registry.</p>
 </div>
 </div>
 <div class="sect2">
@@ -274,7 +274,7 @@ KServe natively integrates the AutoGluon ServingRuntime to expose prediction end
 <h4 id="_how_it_works_2"><a class="anchor" href="#_how_it_works_2"></a>How it works?</h4>
 <div class="paragraph">
 <p>RHAI AutoML allows users to train and rank machine learning models on a leaderboard.
-Once the top model is selected, administrators can register it in the AI hub and deploy it natively with modelFormat: autogluon.
+Once the top model is selected, administrators can register it in the Model Registry and deploy it natively with modelFormat: autogluon.
 KServe provisions the AutoGluon ServingRuntime, allowing applications to score predictions via standard KServe v1/v2 inference APIs without custom containers.</p>
 </div>
 </div>

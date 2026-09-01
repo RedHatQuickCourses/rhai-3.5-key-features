@@ -195,7 +195,7 @@
 <div class="sect2">
 <h3 id="_the_core_answer"><a class="anchor" href="#_the_core_answer"></a>The Core Answer</h3>
 <div class="paragraph">
-<p>EvalHub provides key capabilities including Multi-Tenant Deployment (namespace-admin-managed per-tenant deployment with tenant-scoped collections), Kueue Integration (fair-share scheduling of massive evaluation workloads on LocalQueues), Pluggable Framework Adapters (adapters for RAGAS, DeepEval, Inspect AI, and SWE-Bench), Quality Gates &amp; EvalCards (configurable pass/fail thresholds and automated EvalCard PDF generation), and Storage Independence (Persistent Volume Claims as storage sources for air-gapped environments).</p>
+<p>EvalHub provides key capabilities including Multi-Tenant Deployment (namespace-admin-managed per-tenant deployment with tenant-scoped collections), Kueue Integration (fair-share scheduling of massive evaluation workloads on LocalQueues), Pluggable Framework Adapters (adapters for RAGAS, DeepEval, Inspect AI, and SWE-Bench), Quality Gates &amp; EvalCards, and Storage Independence (Persistent Volume Claims as storage sources for air-gapped environments).</p>
 </div>
 <div class="sect3">
 <h4 id="_what_is_it"><a class="anchor" href="#_what_is_it"></a>What is it?</h4>
@@ -222,7 +222,7 @@ Key capabilities include:</p>
 <p><strong>Pluggable Framework Adapters</strong>: First-class adapters for RAGAS, DeepEval, Inspect AI (UK Safety Institute), and SWE-Bench.</p>
 </li>
 <li>
-<p><strong>Quality Gates &amp; EvalCards</strong>: Configurable pass/fail thresholds in the UI and automated EvalCard generation (a structured PDF capturing model identity, configurations, and results for compliance).</p>
+<p><strong>Quality Gates &amp; EvalCards</strong>: Configurable pass/fail thresholds in the UI.</p>
 </li>
 <li>
 <p><strong>Storage Independence</strong>: Persistent Volume Claims (PVC) as storage sources for air-gapped environments.</p>
@@ -236,7 +236,7 @@ Key capabilities include:</p>
 <p>A regulated healthcare insurer is deploying an automated claim approval agent.
 To satisfy corporate risk committees, they establish an automated evaluation pipeline in EvalHub.
 The system evaluates the agent on the Inspect AI safety framework and RAGAS (checking context recall).
-Upon completion, it generates an official, structured, versioned, and auditable EvalCard that is automatically archived for regulatory compliance audits under national healthcare frameworks.</p>
+Upon completion, it generates an official, structured, versioned, and auditable EvalCard.</p>
 </div>
 </div>
 </div>
@@ -269,7 +269,7 @@ Upon completion, it generates an official, structured, versioned, and auditable 
 <div class="sect2">
 <h3 id="_the_core_answer_2"><a class="anchor" href="#_the_core_answer_2"></a>The Core Answer</h3>
 <div class="paragraph">
-<p>Unstructured Policy-to-Risk Mapping automatically maps policy text to over 600 risk identifiers in IBM&#8217;s AI Risk Atlas Nexus, auto-generating Garak probe profiles.</p>
+<p>Unstructured Policy-to-Risk Mapping automatically maps policy text to over 600 risk identifiers in IBM&#8217;s AI Risk Atlas Nexus, the resulting risk profile feeds into Garak probe selection, NeMo Guardrails configuration and compliance dashboards.</p>
 </div>
 <div class="sect3">
 <h4 id="_what_is_it_2"><a class="anchor" href="#_what_is_it_2"></a>What is it?</h4>
@@ -286,7 +286,7 @@ Upon completion, it generates an official, structured, versioned, and auditable 
 <ul>
 <li>
 <p><strong>MCP Gateway Content Guardrails via TrustyAI Operator (TP)</strong>: Enables enterprises to enforce content safety and privacy policies on agent tool calls directly at the Model Context Protocol (MCP) Gateway without modifying a single line of agent code.
-The TrustyAI Operator automates the deployment of standalone gateway guardrails—automatically discovering the MCP Gateway and BBR plugin to provision an EnvoyFilter—eliminating the requirement to run the full TrustyAI observability and explainability stack.</p>
+The TrustyAI Operator automates the deployment of standalone gateway guardrails—automatically discovering the MCP Gateway.</p>
 </li>
 <li>
 <p><strong>Standardization on NVIDIA NeMo Guardrails (GA)</strong>: RHAI 3.5 unifies its guardrailing strategy by establishing NVIDIA NeMo Guardrails as the single supported backend, while officially deprecating the Java-based FMS Guardrails Orchestrator.
