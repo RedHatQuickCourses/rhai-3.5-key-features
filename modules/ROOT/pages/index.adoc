@@ -12,7 +12,7 @@ This training guide covers the key architectural and functional updates in versi
 This course is designed around the four core product pillars that drive the RHAI 3.5 strategy:
 
 * Fast & Efficient Inference
-* Connecting Agents and Data to Models
+* Connecting Data to Models and Agents
 * Agentic AI
 * Platform Infrastructure, Scale & Security
 

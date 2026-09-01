@@ -1,4 +1,4 @@
-= Connecting Agents and Data to Models
+= Connecting Data to Models and Agents
 
 Raw foundation models are functionally limited without access to enterprise data.
 RHAI 3.5 closes this gap with production-grade data integration pipelines, advanced model-tuning frameworks, and robust evaluation systems to build trustworthy AI applications.
