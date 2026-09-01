@@ -10,7 +10,7 @@ How does EvalHub operate as a unified platform to scientifically validate the pe
 
 === The Core Answer
 
-EvalHub provides key capabilities including Multi-Tenant Deployment (namespace-admin-managed per-tenant deployment with tenant-scoped collections), Kueue Integration (fair-share scheduling of massive evaluation workloads on LocalQueues), Pluggable Framework Adapters (adapters for RAGAS, DeepEval, Inspect AI, and SWE-Bench), Quality Gates & EvalCards (configurable pass/fail thresholds and automated EvalCard PDF generation), and Storage Independence (Persistent Volume Claims as storage sources for air-gapped environments).
+EvalHub provides key capabilities including Multi-Tenant Deployment (namespace-admin-managed per-tenant deployment with tenant-scoped collections), Kueue Integration (fair-share scheduling of massive evaluation workloads on LocalQueues), Pluggable Framework Adapters (adapters for RAGAS, DeepEval, Inspect AI, and SWE-Bench), Quality Gates & EvalCards, and Storage Independence (Persistent Volume Claims as storage sources for air-gapped environments).
 
 ==== What is it?
 
@@ -25,7 +25,7 @@ Key capabilities include:
 - *Multi-Tenant Deployment*: Namespace-admin-managed per-tenant deployment with tenant-scoped collections.
 - *Kueue Integration*: Fair-share scheduling of massive evaluation workloads on LocalQueues.
 - *Pluggable Framework Adapters*: First-class adapters for RAGAS, DeepEval, Inspect AI (UK Safety Institute), and SWE-Bench.
-- *Quality Gates & EvalCards*: Configurable pass/fail thresholds in the UI and automated EvalCard generation (a structured PDF capturing model identity, configurations, and results for compliance).
+- *Quality Gates & EvalCards*: Configurable pass/fail thresholds in the UI.
 - *Storage Independence*: Persistent Volume Claims (PVC) as storage sources for air-gapped environments.
 
 ==== Enterprise Use Case Scenario
@@ -33,7 +33,7 @@ Key capabilities include:
 A regulated healthcare insurer is deploying an automated claim approval agent.
 To satisfy corporate risk committees, they establish an automated evaluation pipeline in EvalHub.
 The system evaluates the agent on the Inspect AI safety framework and RAGAS (checking context recall).
-Upon completion, it generates an official, structured, versioned, and auditable EvalCard that is automatically archived for regulatory compliance audits under national healthcare frameworks.
+Upon completion, it generates an official, structured, versioned, and auditable EvalCard.
 
 == AI Safety and Red Teaming Engine [GA / TP / DP]
 
@@ -53,7 +53,7 @@ Before examining the mechanics below: How does RHAI translate complex regulatory
 
 === The Core Answer
 
-Unstructured Policy-to-Risk Mapping automatically maps policy text to over 600 risk identifiers in IBM's AI Risk Atlas Nexus, auto-generating Garak probe profiles.
+Unstructured Policy-to-Risk Mapping automatically maps policy text to over 600 risk identifiers in IBM's AI Risk Atlas Nexus, the resulting risk profile feeds into Garak probe selection, NeMo Guardrails configuration and compliance dashboards.
 
 ==== What is it?
 
@@ -64,7 +64,7 @@ This capability delivers structured enterprise AI safety infrastructure, enablin
 RHAI 3.5 delivers safety across four key components:
 
 - *MCP Gateway Content Guardrails via TrustyAI Operator (TP)*: Enables enterprises to enforce content safety and privacy policies on agent tool calls directly at the Model Context Protocol (MCP) Gateway without modifying a single line of agent code.
-The TrustyAI Operator automates the deployment of standalone gateway guardrails—automatically discovering the MCP Gateway and BBR plugin to provision an EnvoyFilter—eliminating the requirement to run the full TrustyAI observability and explainability stack.
+The TrustyAI Operator automates the deployment of standalone gateway guardrails—automatically discovering the MCP Gateway.
 - *Standardization on NVIDIA NeMo Guardrails (GA)*: RHAI 3.5 unifies its guardrailing strategy by establishing NVIDIA NeMo Guardrails as the single supported backend, while officially deprecating the Java-based FMS Guardrails Orchestrator.
 This resolves platform fragmentation, transitioning the platform from a collection of experimental safety tools into a coherent, production-grade safety architecture.
 - *MiDojo Execution Engine (DP)*: A man-in-the-middle red-teaming engine that intercepts communication between an agent and its tools.
