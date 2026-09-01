@@ -98,7 +98,7 @@
     <a class="nav-link" href="../chapter3/index.html">Agentic AI</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter3/section1.html">Agentic API Foundation: OGX (GA)</a>
+    <a class="nav-link" href="../chapter3/section1.html">Agentic API Foundation: Responses API and Built-in RAG</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../chapter3/section2.html">Pre-built Templates in AI Hub for Developer Productivity</a>
@@ -237,7 +237,7 @@ RHAI 3.5 gives you the operational controls to keep competing workloads from dis
 <div class="sect3">
 <h4 id="_how_it_works"><a class="anchor" href="#_how_it_works"></a>How it works?</h4>
 <div class="paragraph">
-<p>he system introduces admission control, fairness policies, and starvation protection.
+<p>The system introduces admission control, fairness policies, and starvation protection.
 The Endpoint Picker (EPP) tracks request queues and KV cache utilization.
 High-priority interactive requests are routed ahead of batch or low-priority workloads.
 It prevents any single tenant from monopolizing shared GPU resources, ensuring latency-sensitive requests (e.g., live chatbot responses) are served within their target Time-to-First-Token (TTFT) threshold while gracefully delaying asynchronous batch queues without starving them.</p>
@@ -246,7 +246,7 @@ It prevents any single tenant from monopolizing shared GPU resources, ensuring l
 <div class="sect3">
 <h4 id="_enterprise_use_case_scenario"><a class="anchor" href="#_enterprise_use_case_scenario"></a>Enterprise Use Case Scenario</h4>
 <div class="paragraph">
-<p>A telecommunications provider (such as Telenor) runs a shared GPU cluster serving both an interactive customer chat system (demanding low latency) and a nightly batch job summarizing customer service transcripts.
+<p>A telecommunications provider runs a shared GPU cluster serving both an interactive customer chat system (demanding low latency) and a nightly batch job summarizing customer service transcripts.
 During peak hours, interactive customer traffic surges. SLO-aware serving dynamically prioritizes the live chat requests over the batch processing, maintaining the SLA of the consumer chat application without needing to over-provision dedicated GPU pools.</p>
 </div>
 </div>
@@ -294,7 +294,8 @@ In-flight requests on the newer model are allowed to complete gracefully before 
 <div class="sect3">
 <h4 id="_enterprise_use_case_scenario_2"><a class="anchor" href="#_enterprise_use_case_scenario_2"></a>Enterprise Use Case Scenario</h4>
 <div class="paragraph">
-<p>An e-commerce retailer is upgrading its product recommendation LLM from version 1.0 to 1.1. During the transition, a sudden spike in latency occurs on the new version due to an un-optimized serving parameter.
+<p>An e-commerce retailer is upgrading its product recommendation LLM from version 1.0 to 1.1.
+During the transition, a sudden spike in latency occurs on the new version due to an un-optimized serving parameter.
 RHAI&#8217;s controlled deployment engine detects the latency anomaly and automatically rolls back all traffic to the stable v1.0 engine, protecting the customer checkout experience from disruption.</p>
 </div>
 </div>

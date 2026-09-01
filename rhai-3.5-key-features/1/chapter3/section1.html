@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Agentic API Foundation: OGX (GA) :: Red Hat AI (RHAI) 3.5: New Key Features</title>
+    <title>Agentic API Foundation: Responses API and Built-in RAG :: Red Hat AI (RHAI) 3.5: New Key Features</title>
     <link rel="prev" href="index.html">
     <link rel="next" href="section2.html">
     <meta name="generator" content="Antora 3.2.0-alpha.12">
@@ -98,7 +98,7 @@
     <a class="nav-link" href="index.html">Agentic AI</a>
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="section1.html">Agentic API Foundation: OGX (GA)</a>
+    <a class="nav-link" href="section1.html">Agentic API Foundation: Responses API and Built-in RAG</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="section2.html">Pre-built Templates in AI Hub for Developer Productivity</a>
@@ -166,7 +166,7 @@
   <ul>
     <li><a href="../index.html">Red Hat AI (RHAI) 3.5: New Key Features</a></li>
     <li><a href="index.html">Agentic AI</a></li>
-    <li><a href="section1.html">Agentic API Foundation: OGX (GA)</a></li>
+    <li><a href="section1.html">Agentic API Foundation: Responses API and Built-in RAG</a></li>
   </ul>
 </nav>
 </div>
@@ -175,17 +175,17 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Agentic API Foundation: OGX (GA)</h1>
+<h1 class="page">Agentic API Foundation: Responses API and Built-in RAG</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Building AI agents takes more than raw model endpoints.
-You need a unified, stable API layer to coordinate reasoning, data retrieval, and real-world execution.</p>
+You need a stable, standardized API layer to coordinate multi-turn reasoning, ground responses in your data, and manage real-world execution — without writing custom orchestration code.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_ogx_ga_apis_ga"><a class="anchor" href="#_ogx_ga_apis_ga"></a>OGX GA APIs [GA]</h2>
+<h2 id="_responses_api_and_built_in_rag_ga"><a class="anchor" href="#_responses_api_and_built_in_rag_ga"></a>Responses API and Built-in RAG [GA]</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -197,50 +197,49 @@ You need a unified, stable API layer to coordinate reasoning, data retrieval, an
 <tr>
 <th class="tableblock halign-left valign-top">Architectural Dimension</th>
 <th class="tableblock halign-left valign-top">Custom Orchestration</th>
-<th class="tableblock halign-left valign-top">OGX GA APIs</th>
+<th class="tableblock halign-left valign-top">Responses API + Built-in RAG</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Agent State &amp; Multi-Turn</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Custom state-tracking code and custom document parsers.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Standardized APIs: Responses API manages tool loops; File Processor with Docling parses documents.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom state-tracking code and hand-built retrieval and parsing pipelines.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standardized APIs: the Responses API manages state and tool loops; built-in RAG grounds responses in your data; the File Processor with Docling parses documents.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect2">
 <h3 id="_think_first_question"><a class="anchor" href="#_think_first_question"></a>Think First: Question</h3>
 <div class="paragraph">
-<p>How does OGX deliver a standardized, open-source API layer that abstracts complex agent interactions without custom orchestration code?</p>
+<p>How do the Responses API and built-in RAG deliver grounded, multi-turn agent interactions without custom orchestration or retrieval plumbing?</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_the_core_answer"><a class="anchor" href="#_the_core_answer"></a>The Core Answer</h3>
 <div class="paragraph">
-<p>OGX delivers a standardized, open-source API layer that abstracts complex agent interactions via the Responses API (standardizing multi-turn interactions, maintaining chat history, managing state, and coordinating sequential tool calls), the File Processor API with Docling Integration (ingesting and parsing complex PDF, DOCX, and image documents into structured markdown), and Built-in RAG Capabilities connecting retrieval pipelines directly to the inference layer.</p>
+<p>The Responses API standardizes multi-turn interactions — maintaining chat history, managing state, and coordinating sequential tool calls — while built-in RAG connects retrieval pipelines directly to the inference layer, so agents answer from enterprise data rather than training data alone.
+A File Processor API with Docling integration ingests and parses complex PDF, DOCX, and image documents into structured, vector-ready markdown that feeds those retrieval pipelines.
+==== What is it?</p>
 </div>
-<div class="sect3">
-<h4 id="_what_is_it"><a class="anchor" href="#_what_is_it"></a>What is it?</h4>
 <div class="paragraph">
-<p>OGX (formerly Llama Stack) is the production-ready API foundation for agentic AI on OpenShift AI.
-In version 3.5, the core OGX endpoints graduate to General Availability (GA).</p>
-</div>
+<p>A production-ready, open source API foundation for grounded agentic AI on Red Hat OpenShift AI, delivered through OGX.
+In version 3.5, the Responses API and built-in RAG capabilities graduate to General Availability (GA).</p>
 </div>
 <div class="sect3">
 <h4 id="_how_it_works"><a class="anchor" href="#_how_it_works"></a>How it works?</h4>
 <div class="paragraph">
-<p>OGX delivers a standardized, open-source API layer that abstracts complex agent interactions:</p>
+<p>The layer abstracts complex agent interactions through three standardized capabilities:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Responses API</strong>: Standardizes multi-turn interactions, maintaining chat history, managing state, and coordinating sequential tool calls without custom orchestration code.</p>
+<p><strong>Responses API</strong>: Standardizes multi-turn interactions — maintaining chat history, managing state, and coordinating sequential tool calls — without custom orchestration code.</p>
 </li>
 <li>
-<p><strong>File Processor API with Docling Integration</strong>: Ingests and parses complex PDF, DOCX, and image documents, converting them into structured, vector-ready markdown.</p>
+<p><strong>File Processor API with Docling Integration</strong>: Ingests and parses complex PDF, DOCX, and image documents, converting them into structured, vector-ready markdown for retrieval.</p>
 </li>
 <li>
-<p><strong>Built-in RAG Capabilities</strong>: Connects retrieval pipelines directly to the inference layer.</p>
+<p><strong>Built-in RAG Capabilities</strong>: Connects retrieval pipelines directly to the inference layer, so responses are grounded in enterprise knowledge stores rather than training data alone.</p>
 </li>
 </ul>
 </div>
@@ -248,9 +247,9 @@ In version 3.5, the core OGX endpoints graduate to General Availability (GA).</p
 <div class="sect3">
 <h4 id="_enterprise_use_case_scenario"><a class="anchor" href="#_enterprise_use_case_scenario"></a>Enterprise Use Case Scenario</h4>
 <div class="paragraph">
-<p>A government agency is building a virtual advisor to answer public queries about tax filings.
-The advisor must hold a multi-turn conversation, ingest tax booklets (using the Docling-integrated File Processor API), and look up real-time tax brackets using database tools.
-With OGX, developers implement this complex reasoning loop in a single weekend by building on the standardized Responses API, knowing the deployment is fully supported under Red Hat&#8217;s enterprise SLA.</p>
+<p>A government agency builds a virtual advisor to answer public queries about tax filings.
+The advisor holds a multi-turn conversation, ingests tax booklets through the Docling-integrated File Processor API, grounds every answer in those documents via built-in RAG, and looks up real-time tax brackets using database tools.
+Developers implement this reasoning loop in a single weekend by building on the standardized Responses API — and the deployment is fully supported under Red Hat&#8217;s enterprise SLA.</p>
 </div>
 </div>
 </div>
