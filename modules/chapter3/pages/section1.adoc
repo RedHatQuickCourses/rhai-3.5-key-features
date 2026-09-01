@@ -1,44 +1,44 @@
-= Agentic API Foundation: OGX (GA)
+= Agentic API Foundation: Responses API and Built-in RAG
 
 Building AI agents takes more than raw model endpoints.
-You need a unified, stable API layer to coordinate reasoning, data retrieval, and real-world execution.
+You need a stable, standardized API layer to coordinate multi-turn reasoning, ground responses in your data, and manage real-world execution — without writing custom orchestration code.
 
-== OGX GA APIs [GA]
+== Responses API and Built-in RAG [GA]
 
 [cols="1,2,3", options="header"]
 |===
 | Architectural Dimension
 | Custom Orchestration
-| OGX GA APIs
+| Responses API + Built-in RAG
 
 | Agent State & Multi-Turn
-| Custom state-tracking code and custom document parsers.
-| Standardized APIs: Responses API manages tool loops; File Processor with Docling parses documents.
+| Custom state-tracking code and hand-built retrieval and parsing pipelines.
+| Standardized APIs: the Responses API manages state and tool loops; built-in RAG grounds responses in your data; the File Processor with Docling parses documents.
 |===
 
 === Think First: Question
 
-How does OGX deliver a standardized, open-source API layer that abstracts complex agent interactions without custom orchestration code?
+How do the Responses API and built-in RAG deliver grounded, multi-turn agent interactions without custom orchestration or retrieval plumbing?
 
 === The Core Answer
 
-OGX delivers a standardized, open-source API layer that abstracts complex agent interactions via the Responses API (standardizing multi-turn interactions, maintaining chat history, managing state, and coordinating sequential tool calls), the File Processor API with Docling Integration (ingesting and parsing complex PDF, DOCX, and image documents into structured markdown), and Built-in RAG Capabilities connecting retrieval pipelines directly to the inference layer.
-
+The Responses API standardizes multi-turn interactions — maintaining chat history, managing state, and coordinating sequential tool calls — while built-in RAG connects retrieval pipelines directly to the inference layer, so agents answer from enterprise data rather than training data alone.
+A File Processor API with Docling integration ingests and parses complex PDF, DOCX, and image documents into structured, vector-ready markdown that feeds those retrieval pipelines.
 ==== What is it?
 
-OGX (formerly Llama Stack) is the production-ready API foundation for agentic AI on OpenShift AI.
-In version 3.5, the core OGX endpoints graduate to General Availability (GA).
+A production-ready, open source API foundation for grounded agentic AI on Red Hat OpenShift AI, delivered through OGX.
+In version 3.5, the Responses API and built-in RAG capabilities graduate to General Availability (GA).
 
 ==== How it works?
 
-OGX delivers a standardized, open-source API layer that abstracts complex agent interactions:
+The layer abstracts complex agent interactions through three standardized capabilities:
 
-- *Responses API*: Standardizes multi-turn interactions, maintaining chat history, managing state, and coordinating sequential tool calls without custom orchestration code.
-- *File Processor API with Docling Integration*: Ingests and parses complex PDF, DOCX, and image documents, converting them into structured, vector-ready markdown.
-- *Built-in RAG Capabilities*: Connects retrieval pipelines directly to the inference layer.
+- *Responses API*: Standardizes multi-turn interactions — maintaining chat history, managing state, and coordinating sequential tool calls — without custom orchestration code.
+- *File Processor API with Docling Integration*: Ingests and parses complex PDF, DOCX, and image documents, converting them into structured, vector-ready markdown for retrieval.
+- *Built-in RAG Capabilities*: Connects retrieval pipelines directly to the inference layer, so responses are grounded in enterprise knowledge stores rather than training data alone.
 
 ==== Enterprise Use Case Scenario
 
-A government agency is building a virtual advisor to answer public queries about tax filings.
-The advisor must hold a multi-turn conversation, ingest tax booklets (using the Docling-integrated File Processor API), and look up real-time tax brackets using database tools.
-With OGX, developers implement this complex reasoning loop in a single weekend by building on the standardized Responses API, knowing the deployment is fully supported under Red Hat's enterprise SLA.
+A government agency builds a virtual advisor to answer public queries about tax filings.
+The advisor holds a multi-turn conversation, ingests tax booklets through the Docling-integrated File Processor API, grounds every answer in those documents via built-in RAG, and looks up real-time tax brackets using database tools.
+Developers implement this reasoning loop in a single weekend by building on the standardized Responses API — and the deployment is fully supported under Red Hat's enterprise SLA.

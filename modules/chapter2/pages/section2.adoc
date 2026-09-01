@@ -35,6 +35,6 @@ RHAI 3.5 introduces two self-consistency variants with Adaptive Early Stopping:
 
 ==== Enterprise Use Case Scenario
 
-A tax consulting firm deploys a chatbot to answer tax law questions. Simple queries (e.g., "What is the standard deduction?") are resolved in the first batch of 2 samples, saving inference cost.
+A tax consulting firm deploys a chatbot to answer tax law questions.
+Simple queries (e.g., "What is the standard deduction?") are resolved in the first batch of 2 samples, saving inference cost.
 Complex queries (e.g., "How does depreciation apply to a specific corporate merger?") trigger the full evaluation budget of 8 samples, ensuring high-fidelity reasoning when it is genuinely needed.
-
