@@ -20,7 +20,7 @@ Each module represents a product pillar. Within each module, lessons are structu
 
 Duration: pass:[<span class="course-total-duration" aria-live="polite">…</span>]
 
-== Obejectives
+== Objectives
 
 By the end of this training course, you should be able to:
 
